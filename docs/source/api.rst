@@ -32,6 +32,7 @@ API's Modules
     splitting
     utils
     backend
+    out_of_core
     experimental
 
 Overview

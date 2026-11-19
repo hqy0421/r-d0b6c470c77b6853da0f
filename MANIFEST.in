@@ -2,3 +2,4 @@ include README.md
 include requirements.txt
 include requirements_dev.txt
 include requirements_interactive.txt
+include requirements_parquet.txt

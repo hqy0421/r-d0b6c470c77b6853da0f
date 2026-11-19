@@ -6,6 +6,9 @@ This file documents main changes across releases of **PUNCC**.
 
 ## [0.9.3] - 2026-06-23
 
+### Added
+- Added `deel.puncc.api.out_of_core`, an out-of-core calibration artifact for split conformal prediction when Parquet calibration shards do not fit in memory. It streams shards in bounded batches (in the requested feature order), predicts with a fixed trained predictor, stores native scalar nonconformity scores (duplicates included) in an externally sorted file, and computes the exact finite-sample quantile with the existing `alpha` and `+inf` conventions. The artifact can be reopened without rescanning the source shards or loading all scores in memory, exposes `compute_quantile`/`calibrate` like `BaseCalibrator`, and persists the sample count, feature/target schema and model binding. Incomplete artifacts are rejected. Requires the optional `pyarrow` dependency (`pip install puncc[parquet]`).
+
 ### Changed
 - Updated `deel.puncc.classification.RAPS` to subclass `SplitConformalPredictor`. This enable substantial code factorization
 - Updated `deel.puncc.classification.ClasswiseLAC` to pass `ClasswiseCalibrator` directly to the `SplitConformalPredictor`'s constructor

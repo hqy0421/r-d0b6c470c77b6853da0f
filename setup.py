@@ -47,6 +47,8 @@ requirements = _read_requirements("requirements.txt")
 
 interactive_requirements = _read_requirements("requirements_interactive.txt")
 
+parquet_requirements = _read_requirements("requirements_parquet.txt")
+
 dev_requirements = _read_requirements("requirements_dev.txt")
 
 setuptools.setup(
@@ -68,6 +70,7 @@ setuptools.setup(
     install_requires=requirements,
     extras_require={
         "interactive": interactive_requirements,
+        "parquet": parquet_requirements,
         "dev": dev_requirements,
     },
     python_requires=">=3.9",
